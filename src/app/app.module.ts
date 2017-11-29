@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/app-header';
 import { MatchComponent } from './match/app-match';
@@ -19,9 +19,11 @@ import { MatchDataService } from './app-dataservice';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [MatchDataService],
+  providers: [
+    MatchDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,5 +8,5 @@ import { MatchComponent } from '../match/app-match';
 })
 
 export class MatchDetailsComponent {
-    private match: MatchComponent;
+    public match: MatchComponent;
 }

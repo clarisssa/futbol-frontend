@@ -12,9 +12,10 @@ import { MatchComponent } from '../match/app-match';
 
 export class ListMatchesComponent implements OnInit {
     public matches: MatchComponent[];
+    public listmatches;
     public obs: Observable<any>;
 
-    constructor(private http: Http, private mds: MatchDataService) { }
+    constructor(private http: Http, protected mds: MatchDataService) { }
 
     getAllActiveMatches(): void {
       this.obs = this.mds.getAllActiveMatches();

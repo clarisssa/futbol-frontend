@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.foooter {
+    text-align: center;
+    color:black;
+    font-weight: bolder;
+    
+}
+.fondo{
+    background-image: url('/assets/images/fut.jpg');
+}

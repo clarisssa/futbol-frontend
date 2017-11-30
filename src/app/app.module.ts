@@ -8,6 +8,8 @@ import { ListMatchesComponent } from './listmatches/app-listmatches';
 import { MatchDetailsComponent } from './matchdetails/app-matchdetails';
 import { AppRoutingModule } from './app-routes';
 import { MatchDataService } from './app-dataservice';
+import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './footer/app-footer';
 
 @NgModule({
   declarations: [
@@ -16,14 +18,15 @@ import { MatchDataService } from './app-dataservice';
     MatchComponent,
     ListMatchesComponent,
     MatchDetailsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
-  providers: [
-    MatchDataService],
+  providers: [MatchDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

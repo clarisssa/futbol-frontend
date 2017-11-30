@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { MatchDataService } from '../app-dataservice';
 import { MatchComponent } from '../match/app-match';
+import { Router } from '@angular/router';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-listmatches',
@@ -11,18 +13,23 @@ import { MatchComponent } from '../match/app-match';
 })
 
 export class ListMatchesComponent implements OnInit {
-    public matches: MatchComponent[];
-    public listmatches;
-    public obs: Observable<any>;
 
-    constructor(private http: Http, protected mds: MatchDataService) { }
+  public matches: MatchComponent[];
+  public obs: Observable<any>;
+  public selectedMatch: MatchComponent;
 
-    getAllActiveMatches(): void {
-      this.obs = this.mds.getAllActiveMatches();
-      this.obs.subscribe(response => this.matches = response.results);
-    }
+  constructor(http: Http, protected mds: MatchDataService) { }
 
-    ngOnInit() {
-      this.getAllActiveMatches();
-    }
+  getAllActiveMatches(): void {
+    this.obs = this.mds.getAllActiveMatches();
+    this.obs.subscribe(response => this.matches = response.results);
+  }
+
+  onSelect(match: MatchComponent): void {
+    this.selectedMatch = match;
+  }
+
+  ngOnInit() {
+    this.getAllActiveMatches();
+  }
 }

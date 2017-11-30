@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { ActivatedRoute } from '@angular/router';
-import { MatchDataService } from '../app-dataservice';
 import { Observable } from 'rxjs/Observable';
-
-
+import { Http } from '@angular/http';
+import { MatchDataService } from '../app-dataservice';
+import 'rxjs/add/operator/map';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-match',
@@ -54,6 +53,13 @@ export class MatchComponent implements OnInit {
             this.stadium = response.stadium;
             this.finished = response.finished;
             this.events = response.events;
+        });
+    }
+
+    ngOnInit() {
+        this.sub = this.route.params.subscribe(params => {
+            this.id = +params['id'];
+            this.mds.getOneMatch(this.id);
         });
     }*/
 }

@@ -22,7 +22,7 @@ export class ListMatchesComponent implements OnInit {
 
   getAllActiveMatches(): void {
     this.obs = this.mds.getAllActiveMatches();
-    this.obs.subscribe(response => this.matches = response.results);
+    this.obs.subscribe(response => this.matches = response.matches);
   }
 
   onSelect(match: MatchComponent): void {

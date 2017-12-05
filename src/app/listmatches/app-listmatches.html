@@ -4,10 +4,10 @@
         
         <li *ngFor="let match of matches">
             <div class="row">
-                <span class="col-md-4 col-lg-4 team">{{match.team1}}</span>
+                <span class="col-md-4 col-lg-4 team">{{match.team1.name}}</span>
                 <span class="result col-md-2 col-lg-2">{{match.score}}</span>
-                <span class="col-md-4 col-lg-4 team">{{match.team2}}</span>
-                <span class="time col-md-1 col-lg-1">{{match.date}}</span>
+                <span class="col-md-4 col-lg-4 team">{{match.team2.name}}</span>
+                <span class="time col-md-1 col-lg-1">{{match.minutes}}</span>
                 <!--<a routerLink="/details" routerLinkActive="active">
                     <button class="details col-md-3 col-lg-3">Más info</button>
                 </a>-->

@@ -23,9 +23,13 @@ export class MatchComponent implements OnInit {
     public obs: Observable<any>;
     public sub: any;
 
+    public minutes;
+
     constructor(http: Http, private route: ActivatedRoute, private mds: MatchDataService) { }
 
     ngOnInit() {
+        let today = new Date();
+
         this.sub = this.route.params.subscribe(params => {
             this.id = +params['id'];
             this.obs = this.mds.getOneMatch(this.id);
@@ -33,33 +37,13 @@ export class MatchComponent implements OnInit {
                 this.id = response.id;
                 this.score = response.score;
                 this.date = response.date;
+                this.minutes = today.getTime() - this.date.getTime();
                 this.team1 = response.team1;
                 this.team2 = response.team2;
                 this.stadium = response.stadium;
                 this.finished = response.finished;
                 this.events = response.events;
             });
-          });
-    }
-
-    /*getOneMatch(id): void {
-        this.obs = this.mds.getOneMatch(id);
-        this.obs.subscribe(response => {
-            this.id = response.id;
-            this.score = response.score;
-            this.date = response.date;
-            this.team1 = response.team1;
-            this.team2 = response.team2;
-            this.stadium = response.stadium;
-            this.finished = response.finished;
-            this.events = response.events;
         });
     }
-
-    ngOnInit() {
-        this.sub = this.route.params.subscribe(params => {
-            this.id = +params['id'];
-            this.mds.getOneMatch(this.id);
-        });
-    }*/
 }

@@ -16,12 +16,10 @@ export class MatchDataService {
         matches = this.http.get('http://localhost:3000/api/match/finished/false').map(res => res.json());
         return matches;
     }
-    /*   return this.http.get('http://localhost:3000/api/match/finished/false').map(res => res.json());
-    }*/
 
-    getOneMatch(id: any): Observable<MatchComponent> {
+    getOneMatch(id: any): Observable<any> {
         let match: any;
-        match = this.http.get('http://localhost:3000/api/match/' + '5a1eb710e688a41fdc2f7a92').map(res => res.json());
+        match = this.http.get('http://localhost:3000/api/match/' + id).map(res => res.json());
         return match;
     }
 }

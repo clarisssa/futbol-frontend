@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class MatchComponent implements OnInit {
-    public id;
+    public _id;
     public score;
     public date;
     public team1;
@@ -22,28 +22,42 @@ export class MatchComponent implements OnInit {
     public events;
     public obs: Observable<any>;
     public sub: any;
-
+    public today = new Date();
     public minutes;
 
     constructor(http: Http, private route: ActivatedRoute, private mds: MatchDataService) { }
 
+    getOneMatch(_id): void {
+        this.obs = this.mds.getOneMatch(_id);
+        this.obs.subscribe(response => {
+            this._id = response._id;
+            this.score = response.score;
+            this.date = response.date;
+            this.minutes = this.today.getTime() - this.date.getTime();
+            this.team1 = response.team1;
+            this.team2 = response.team2;
+            this.stadium = response.stadium;
+            this.finished = response.finished;
+            this.events = response.events;
+        });
+    }
+
     ngOnInit() {
-        let today = new Date();
 
         this.sub = this.route.params.subscribe(params => {
-            this.id = +params['id'];
-            this.obs = this.mds.getOneMatch(this.id);
-            this.obs.subscribe(response => {
-                this.id = response.id;
+            this._id = +params['id'];
+            this.getOneMatch(this._id);
+            /*this.obs.subscribe(response => {
+                this.id = response._id;
                 this.score = response.score;
                 this.date = response.date;
-                this.minutes = today.getTime() - this.date.getTime();
+                this.minutes = this.today.getTime() - this.date.getTime();
                 this.team1 = response.team1;
                 this.team2 = response.team2;
                 this.stadium = response.stadium;
                 this.finished = response.finished;
                 this.events = response.events;
-            });
+            });*/
         });
     }
 }

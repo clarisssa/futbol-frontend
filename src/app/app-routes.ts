@@ -12,7 +12,7 @@ export const routes: Routes = [
       path: 'home',
       component: ListMatchesComponent,
     },
-    { path: 'details',
+    { path: 'match/:id',
       component: MatchDetailsComponent,
     },
     /*{ path: '**',

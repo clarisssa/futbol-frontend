@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class MatchComponent implements OnInit {
-    public _id;
+    public _id: string;
     public score;
     public date;
     public team1;
@@ -30,10 +30,10 @@ export class MatchComponent implements OnInit {
     getOneMatch(_id): void {
         this.obs = this.mds.getOneMatch(_id);
         this.obs.subscribe(response => {
-            this._id = response._id;
+            this._id = String(response._id);
             this.score = response.score;
             this.date = response.date;
-            this.minutes = this.today.getTime() - this.date.getTime();
+            // this.minutes = this.today.getTime() - this.date.getTime();
             this.team1 = response.team1;
             this.team2 = response.team2;
             this.stadium = response.stadium;
@@ -45,7 +45,7 @@ export class MatchComponent implements OnInit {
     ngOnInit() {
 
         this.sub = this.route.params.subscribe(params => {
-            this._id = +params['id'];
+            this._id = String(+params['_id']);
             this.getOneMatch(this._id);
             /*this.obs.subscribe(response => {
                 this.id = response._id;

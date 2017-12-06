@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { MatchDetailsComponent } from './matchdetails/app-matchdetails';
+import { MatchComponent } from './match/app-match';
 import { ListMatchesComponent} from './listmatches/app-listmatches';
 
 export const routes: Routes = [
@@ -12,8 +12,8 @@ export const routes: Routes = [
       path: 'home',
       component: ListMatchesComponent,
     },
-    { path: 'match/:id',
-      component: MatchDetailsComponent,
+    { path: 'match/:_id',
+      component: MatchComponent,
     },
     /*{ path: '**',
     component: PageNotFoundComponent

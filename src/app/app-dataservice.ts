@@ -19,7 +19,7 @@ export class MatchDataService {
 
     getOneMatch(id: any): Observable<any> {
         let match: any;
-        match = this.http.get('http://localhost:3000/api/match/' + id).map(res => res.json());
+        match = this.http.get('http://localhost:3000/api/match/' + '5a1eb808e688a41fdc2f7a95').map(res => res.json());
         return match;
     }
 }
